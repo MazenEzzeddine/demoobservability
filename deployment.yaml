@@ -2,13 +2,13 @@ apiVersion: v1
 kind: Pod
 metadata:
   labels:
-    app: demoobservability
+    app: mazen
   name: demoobservabilitypod
 spec:
   restartPolicy: Never
   containers:
     - name: demoobservabilitycontainer
-      image: docker.io/mezzeddine/demoobservability:v0
+      image: docker.io/mezzeddine/demoobservability:v1
       ports:
         - containerPort: 8080
           name: brom
@@ -33,11 +33,11 @@ kind: PodMonitor
 metadata:
   name: demoobservabilitypodmonitor
   labels:
-    app: demoobservability
+    app: strimzi
 spec:
   selector:
     matchLabels:
-      app: demoobservability
+      app: mazen
   namespaceSelector:
     matchNames:
       - default
